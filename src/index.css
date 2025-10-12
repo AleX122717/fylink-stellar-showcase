@@ -103,7 +103,6 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    cursor: none;
   }
   
   html {
@@ -112,15 +111,17 @@ All colors MUST be HSL.
 }
 
 @layer components {
-  .custom-cursor {
-    @apply pointer-events-none fixed top-0 left-0 w-6 h-6 border-2 border-primary rounded-full z-[9999];
-    transform: translate(-50%, -50%);
-    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
-    mix-blend-mode: difference;
+  .color-animate {
+    animation: colorShift 10s ease-in-out infinite;
   }
   
-  .custom-cursor.hover {
-    @apply w-12 h-12 border-accent;
+  @keyframes colorShift {
+    0%, 100% {
+      filter: hue-rotate(0deg);
+    }
+    50% {
+      filter: hue-rotate(30deg);
+    }
   }
   
   .section-title {

@@ -1,99 +1,87 @@
-import { useEffect, useRef } from 'react';
-
 const AnimatedBackground = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const particles: Array<{
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      size: number;
-    }> = [];
-
-    const particleCount = 50;
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        size: Math.random() * 2 + 1,
-      });
-    }
-
-    const isDark = document.documentElement.classList.contains('dark');
-    
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      const isDarkMode = document.documentElement.classList.contains('dark');
-      const particleColor = isDarkMode ? 'rgba(100, 150, 255, 0.3)' : 'rgba(60, 100, 200, 0.2)';
-      const lineColor = isDarkMode ? 'rgba(100, 150, 255, 0.1)' : 'rgba(60, 100, 200, 0.08)';
-
-      particles.forEach((particle) => {
-        particle.x += particle.vx;
-        particle.y += particle.vy;
-
-        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = particleColor;
-        ctx.fill();
-      });
-
-      particles.forEach((particle, i) => {
-        particles.slice(i + 1).forEach((otherParticle) => {
-          const dx = particle.x - otherParticle.x;
-          const dy = particle.y - otherParticle.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 150) {
-            ctx.beginPath();
-            ctx.moveTo(particle.x, particle.y);
-            ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.strokeStyle = lineColor;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        });
-      });
-
-      requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 pointer-events-none opacity-50 z-0"
-    />
+    <div className="fixed inset-0 pointer-events-none opacity-30 z-0 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 animate-gradient" />
+      
+      <div className="wave-container">
+        <div className="wave wave1" />
+        <div className="wave wave2" />
+        <div className="wave wave3" />
+      </div>
+
+      <style>{`
+        @keyframes gradient {
+          0%, 100% {
+            transform: scale(1) rotate(0deg);
+            opacity: 0.3;
+          }
+          50% {
+            transform: scale(1.1) rotate(5deg);
+            opacity: 0.5;
+          }
+        }
+
+        .animate-gradient {
+          animation: gradient 20s ease-in-out infinite;
+        }
+
+        .wave-container {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+
+        .wave {
+          position: absolute;
+          width: 200%;
+          height: 200%;
+          background: linear-gradient(
+            45deg,
+            transparent,
+            hsl(var(--primary) / 0.1),
+            transparent,
+            hsl(var(--accent) / 0.1)
+          );
+          animation: wave 15s ease-in-out infinite;
+        }
+
+        .wave1 {
+          top: -50%;
+          left: -50%;
+          animation-duration: 15s;
+        }
+
+        .wave2 {
+          top: -30%;
+          left: -30%;
+          animation-duration: 20s;
+          animation-delay: -5s;
+        }
+
+        .wave3 {
+          top: -40%;
+          left: -40%;
+          animation-duration: 25s;
+          animation-delay: -10s;
+        }
+
+        @keyframes wave {
+          0%, 100% {
+            transform: translate(0, 0) rotate(0deg);
+          }
+          25% {
+            transform: translate(10%, 10%) rotate(90deg);
+          }
+          50% {
+            transform: translate(0, 20%) rotate(180deg);
+          }
+          75% {
+            transform: translate(-10%, 10%) rotate(270deg);
+          }
+        }
+      `}</style>
+    </div>
   );
 };
 

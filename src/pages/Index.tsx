@@ -1,4 +1,3 @@
-import CustomCursor from '@/components/CustomCursor';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
@@ -7,13 +6,14 @@ import AboutSection from '@/components/AboutSection';
 import PremiumSection from '@/components/PremiumSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import { LanguageProvider } from '@/contexts/LanguageContext';
 
 const Index = () => {
   return (
-    <div className="relative min-h-screen">
-      <CustomCursor />
-      <AnimatedBackground />
-      <Navigation />
+    <LanguageProvider>
+      <div className="relative min-h-screen">
+        <AnimatedBackground />
+        <Navigation />
       
       <main className="relative z-10">
         <HeroSection />
@@ -22,9 +22,10 @@ const Index = () => {
         <PremiumSection />
         <ContactSection />
       </main>
-      
-      <Footer />
-    </div>
+        
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 };
 

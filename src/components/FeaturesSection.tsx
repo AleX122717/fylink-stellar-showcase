@@ -1,53 +1,19 @@
 import { Shield, Zap, Flame, Settings, Sparkles, Lock } from 'lucide-react';
 import { useEffect, useRef } from 'react';
-
-const features = [
-  {
-    icon: Shield,
-    title: 'Sécurité Maximale',
-    description: 'Protection de vos données avec les dernières technologies de cryptage',
-    color: 'text-blue-500',
-    animation: 'hover:rotate-12',
-  },
-  {
-    icon: Zap,
-    title: 'Rapidité Extrême',
-    description: 'Performance optimisée pour une expérience utilisateur instantanée',
-    color: 'text-yellow-500',
-    animation: 'hover:scale-110',
-  },
-  {
-    icon: Flame,
-    title: 'Puissance IA',
-    description: 'Intelligence artificielle de pointe pour automatiser vos tâches',
-    color: 'text-orange-500',
-    animation: 'hover:rotate-6',
-  },
-  {
-    icon: Settings,
-    title: 'Automatisation',
-    description: 'Configurez une fois, profitez pour toujours',
-    color: 'text-purple-500',
-    animation: 'hover:rotate-180',
-  },
-  {
-    icon: Sparkles,
-    title: 'Innovation',
-    description: 'Technologies de demain, disponibles aujourd\'hui',
-    color: 'text-pink-500',
-    animation: 'hover:scale-110',
-  },
-  {
-    icon: Lock,
-    title: 'Fiabilité',
-    description: 'Service disponible 24/7 avec une stabilité exceptionnelle',
-    color: 'text-green-500',
-    animation: 'hover:-rotate-12',
-  },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const FeaturesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
+
+  const features = [
+    { icon: Shield, key: 'security', color: 'text-blue-500', animation: 'hover:rotate-12' },
+    { icon: Zap, key: 'speed', color: 'text-yellow-500', animation: 'hover:scale-110' },
+    { icon: Flame, key: 'power', color: 'text-orange-500', animation: 'hover:rotate-6' },
+    { icon: Settings, key: 'automation', color: 'text-purple-500', animation: 'hover:rotate-180' },
+    { icon: Sparkles, key: 'innovation', color: 'text-pink-500', animation: 'hover:scale-110' },
+    { icon: Lock, key: 'reliability', color: 'text-green-500', animation: 'hover:-rotate-12' },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -72,32 +38,33 @@ const FeaturesSection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="section-title">
-            Fonctionnalités <span className="text-primary">Avancées</span>
+            {t.features.title.split(' ')[0]} <span className="text-primary color-animate">{t.features.title.split(' ').slice(1).join(' ')}</span>
           </h2>
           <p className="section-subtitle">
-            Des outils puissants pour transformer votre gestion communautaire
+            {t.features.subtitle}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => {
             const Icon = feature.icon;
+            const featureData = t.features[feature.key as keyof typeof t.features] as { title: string; description: string };
             return (
               <div
                 key={index}
                 className="feature-card opacity-0 group p-8 bg-card border border-border rounded-2xl hover:border-primary transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className={`w-16 h-16 rounded-xl bg-secondary flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300 ${feature.animation}`}>
+                <div className={`w-16 h-16 rounded-xl bg-secondary flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300 ${feature.animation} color-animate`}>
                   <Icon className={`w-8 h-8 ${feature.color} group-hover:text-white transition-all duration-300`} />
                 </div>
                 
                 <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                  {feature.title}
+                  {featureData.title}
                 </h3>
                 
                 <p className="text-muted-foreground leading-relaxed">
-                  {feature.description}
+                  {featureData.description}
                 </p>
               </div>
             );
