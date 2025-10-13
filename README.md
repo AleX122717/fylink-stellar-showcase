@@ -1,73 +1,195 @@
-# Welcome to your Lovable project
+# IceFy - Site Vitrine Professionnel
 
-## Project info
+Bienvenue sur le projet **IceFy** ! Ce site vitrine moderne et animé présente une solution technologique révolutionnaire pour la gestion communautaire et l'automatisation.
 
-**URL**: https://lovable.dev/projects/065c9066-3df2-4265-9111-fe178df9f02c
+## 📋 Prérequis
 
-## How can I edit this code?
+Avant de commencer, assurez-vous d'avoir installé :
+- **Node.js** (version 18 ou supérieure) - [Télécharger ici](https://nodejs.org/)
+- **npm** (inclus avec Node.js)
 
-There are several ways of editing your application.
+## 🚀 Installation
 
-**Use Lovable**
+### 1. Cloner le projet
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/065c9066-3df2-4265-9111-fe178df9f02c) and start prompting.
+```bash
+git clone <URL_DU_REPOSITORY>
+cd icefy
+```
 
-Changes made via Lovable will be committed automatically to this repo.
+### 2. Installer les dépendances
 
-**Use your preferred IDE**
+```bash
+npm install
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 3. Lancer le projet en mode développement
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Le site sera accessible sur `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📦 Scripts disponibles
 
-**Use GitHub Codespaces**
+- `npm run dev` - Lance le serveur de développement
+- `npm run build` - Compile le projet pour la production
+- `npm run preview` - Prévisualise la version de production
+- `npm run lint` - Vérifie la qualité du code
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📁 Structure du projet
 
-## What technologies are used for this project?
+Voici la liste complète des fichiers à copier pour ce projet :
 
-This project is built with:
+### Fichiers de configuration racine
+- `index.html` - Point d'entrée HTML
+- `vite.config.ts` - Configuration Vite
+- `tailwind.config.ts` - Configuration Tailwind CSS
+- `tsconfig.json` - Configuration TypeScript
+- `tsconfig.app.json` - Configuration TypeScript pour l'application
+- `tsconfig.node.json` - Configuration TypeScript pour Node
+- `postcss.config.js` - Configuration PostCSS
+- `eslint.config.js` - Configuration ESLint
+- `components.json` - Configuration des composants shadcn/ui
+- `package.json` - Dépendances et scripts npm
+- `package-lock.json` - Verrouillage des versions de dépendances
+- `.gitignore` - Fichiers à ignorer par Git
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Dossier `src/`
 
-## How can I deploy this project?
+#### Fichiers principaux
+- `src/main.tsx` - Point d'entrée de l'application React
+- `src/App.tsx` - Composant principal
+- `src/App.css` - Styles du composant App
+- `src/index.css` - Styles globaux et design system
+- `src/vite-env.d.ts` - Types Vite
 
-Simply open [Lovable](https://lovable.dev/projects/065c9066-3df2-4265-9111-fe178df9f02c) and click on Share -> Publish.
+#### `src/pages/`
+- `src/pages/Index.tsx` - Page d'accueil principale
+- `src/pages/NotFound.tsx` - Page 404
 
-## Can I connect a custom domain to my Lovable project?
+#### `src/components/` (Composants personnalisés)
+- `src/components/Navigation.tsx` - Barre de navigation avec changement de langue
+- `src/components/HeroSection.tsx` - Section héro avec slogan animé
+- `src/components/FeaturesSection.tsx` - Section des fonctionnalités
+- `src/components/AboutSection.tsx` - Section À propos
+- `src/components/PremiumSection.tsx` - Section Premium avec 2 offres
+- `src/components/ContactSection.tsx` - Section Contact
+- `src/components/Footer.tsx` - Pied de page avec réseaux sociaux
+- `src/components/AnimatedBackground.tsx` - Arrière-plan animé avec vagues
+- `src/components/TypewriterText.tsx` - Composant de texte animé (machine à écrire)
 
-Yes, you can!
+#### `src/components/ui/` (Composants UI shadcn)
+- `src/components/ui/accordion.tsx`
+- `src/components/ui/alert-dialog.tsx`
+- `src/components/ui/alert.tsx`
+- `src/components/ui/aspect-ratio.tsx`
+- `src/components/ui/avatar.tsx`
+- `src/components/ui/badge.tsx`
+- `src/components/ui/breadcrumb.tsx`
+- `src/components/ui/button.tsx`
+- `src/components/ui/calendar.tsx`
+- `src/components/ui/card.tsx`
+- `src/components/ui/carousel.tsx`
+- `src/components/ui/chart.tsx`
+- `src/components/ui/checkbox.tsx`
+- `src/components/ui/collapsible.tsx`
+- `src/components/ui/command.tsx`
+- `src/components/ui/context-menu.tsx`
+- `src/components/ui/dialog.tsx`
+- `src/components/ui/drawer.tsx`
+- `src/components/ui/dropdown-menu.tsx`
+- `src/components/ui/form.tsx`
+- `src/components/ui/hover-card.tsx`
+- `src/components/ui/input-otp.tsx`
+- `src/components/ui/input.tsx`
+- `src/components/ui/label.tsx`
+- `src/components/ui/menubar.tsx`
+- `src/components/ui/navigation-menu.tsx`
+- `src/components/ui/pagination.tsx`
+- `src/components/ui/popover.tsx`
+- `src/components/ui/progress.tsx`
+- `src/components/ui/radio-group.tsx`
+- `src/components/ui/resizable.tsx`
+- `src/components/ui/scroll-area.tsx`
+- `src/components/ui/select.tsx`
+- `src/components/ui/separator.tsx`
+- `src/components/ui/sheet.tsx`
+- `src/components/ui/sidebar.tsx`
+- `src/components/ui/skeleton.tsx`
+- `src/components/ui/slider.tsx`
+- `src/components/ui/sonner.tsx`
+- `src/components/ui/switch.tsx`
+- `src/components/ui/table.tsx`
+- `src/components/ui/tabs.tsx`
+- `src/components/ui/textarea.tsx`
+- `src/components/ui/toast.tsx`
+- `src/components/ui/toaster.tsx`
+- `src/components/ui/toggle-group.tsx`
+- `src/components/ui/toggle.tsx`
+- `src/components/ui/tooltip.tsx`
+- `src/components/ui/use-toast.ts`
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+#### `src/contexts/`
+- `src/contexts/LanguageContext.tsx` - Contexte de gestion des langues (FR/EN/ES)
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+#### `src/lib/`
+- `src/lib/utils.ts` - Utilitaires
+- `src/lib/i18n.ts` - Système d'internationalisation (traductions)
+
+#### `src/hooks/`
+- `src/hooks/use-mobile.tsx` - Hook pour détection mobile
+- `src/hooks/use-toast.ts` - Hook pour les notifications toast
+
+### Dossier `public/`
+- `public/robots.txt` - Configuration SEO pour robots
+- `public/favicon.ico` - Icône du site
+- `public/placeholder.svg` - Image placeholder
+
+## ✨ Fonctionnalités
+
+- ✅ **Thème clair/sombre** avec transition fluide
+- ✅ **Système multilingue** (Français, Anglais, Espagnol)
+- ✅ **Animations avancées** (vagues, dégradés, texte machine à écrire)
+- ✅ **Design responsive** adapté à tous les écrans
+- ✅ **2 offres Premium** (Premium à 4,99€ et Premium+ à 19,99€)
+- ✅ **Navigation rétractable** au scroll
+- ✅ **Réseaux sociaux** (Discord, TikTok, Instagram)
+
+## 🎨 Technologies utilisées
+
+- **React 18** - Framework JavaScript
+- **TypeScript** - Langage typé
+- **Vite** - Build tool ultra-rapide
+- **Tailwind CSS** - Framework CSS utilitaire
+- **shadcn/ui** - Composants UI modernes
+- **Lucide React** - Icônes
+- **React Router** - Navigation
+
+## 📝 Personnalisation
+
+Pour personnaliser les couleurs et le design, modifiez les fichiers suivants :
+- `src/index.css` - Variables CSS du design system
+- `tailwind.config.ts` - Configuration Tailwind et couleurs
+
+Pour modifier les traductions :
+- `src/lib/i18n.ts` - Ajoutez ou modifiez les traductions
+
+## 🌐 Déploiement
+
+Pour compiler le projet pour la production :
+
+```bash
+npm run build
+```
+
+Les fichiers compilés seront dans le dossier `dist/`
+
+## 📄 Licence
+
+Ce projet est privé et propriétaire.
+
+---
+
+**Développé avec ❄️ par l'équipe IceFy**
