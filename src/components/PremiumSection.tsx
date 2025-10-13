@@ -103,7 +103,7 @@ const PremiumSection = () => {
                 <Crown className="w-5 h-5 group-hover:-rotate-12 transition-transform" />
               </button>
 
-              <button className="w-full py-3 mt-3 bg-card/50 backdrop-blur-sm border-2 border-premium/40 rounded-xl font-semibold shadow-lg hover:bg-card hover:border-premium/60 transition-all hover:scale-105 text-premium">
+              <button className="w-full py-3 mt-3 bg-background/10 backdrop-blur-sm text-foreground border border-premium/30 rounded-xl font-medium shadow-lg hover:bg-background/20 hover:border-premium/50 transition-all hover:scale-105">
                 Voir la démo
               </button>
             </div>
