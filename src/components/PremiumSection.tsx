@@ -102,6 +102,10 @@ const PremiumSection = () => {
                 {t.premium.cta}
                 <Crown className="w-5 h-5 group-hover:-rotate-12 transition-transform" />
               </button>
+
+              <button className="w-full py-3 mt-3 bg-background/10 backdrop-blur-sm text-foreground border border-premium/30 rounded-xl font-medium shadow-lg hover:bg-background/20 hover:border-premium/50 transition-all hover:scale-105">
+                Voir la démo
+              </button>
             </div>
           </div>
         </div>
