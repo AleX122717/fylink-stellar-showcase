@@ -48,7 +48,7 @@ const Navigation = () => {
           <a href="#about" className="text-sm font-medium hover:text-primary transition-all duration-300 hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">
             {t.nav.about}
           </a>
-          <a href="#premium" className="text-sm font-medium hover:text-primary transition-all duration-300 hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">
+          <a href="#premium" className="text-sm font-medium hover:text-primary transition-all duration-300 hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[hsl(45,100%,50%)] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">
             {t.nav.premium}
           </a>
           <a href="#contact" className="text-sm font-medium hover:text-primary transition-all duration-300 hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">

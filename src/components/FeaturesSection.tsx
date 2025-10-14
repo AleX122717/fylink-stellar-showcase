@@ -1,6 +1,7 @@
 import { Shield, Zap, Flame, Settings, Sparkles, Lock } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import TypewriterText from './TypewriterText';
 
 const FeaturesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -40,9 +41,9 @@ const FeaturesSection = () => {
           <h2 className="section-title">
             {t.features.title.split(' ')[0]} <span className="text-primary color-animate">{t.features.title.split(' ').slice(1).join(' ')}</span>
           </h2>
-          <p className="section-subtitle">
-            {t.features.subtitle}
-          </p>
+          <div className="section-subtitle min-h-[4em]">
+            <TypewriterText texts={[t.features.subtitle]} />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

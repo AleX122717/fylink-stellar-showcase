@@ -1,5 +1,6 @@
 import { Target, Eye, Rocket } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import TypewriterText from './TypewriterText';
 
 const AboutSection = () => {
   const { t } = useLanguage();
@@ -33,9 +34,9 @@ const AboutSection = () => {
                 <Eye className="w-10 h-10 text-white" />
               </div>
               <h3 className="text-xl font-bold mb-3">{t.about.vision}</h3>
-              <p className="text-muted-foreground">
-                {t.about.visionDesc}
-              </p>
+              <div className="text-muted-foreground min-h-[4em]">
+                <TypewriterText texts={[t.about.visionDesc]} />
+              </div>
             </div>
 
             <div className="text-center p-6">
