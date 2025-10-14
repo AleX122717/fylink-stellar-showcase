@@ -41,9 +41,9 @@ const FeaturesSection = () => {
           <h2 className="section-title">
             {t.features.title.split(' ')[0]} <span className="text-primary color-animate">{t.features.title.split(' ').slice(1).join(' ')}</span>
           </h2>
-          <div className="section-subtitle min-h-[4em]">
-            <TypewriterText texts={[t.features.subtitle]} />
-          </div>
+          <p className="section-subtitle animate-fade-in">
+            {t.features.subtitle}
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
