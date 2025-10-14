@@ -13,9 +13,9 @@ const AboutSection = () => {
             <h2 className="section-title">
               {t.about.title.split(' ').slice(0, 2).join(' ')} <span className="text-accent color-animate">{t.about.title.split(' ').slice(2).join(' ')}</span>
             </h2>
-            <p className="section-subtitle">
-              {t.about.subtitle}
-            </p>
+            <div className="section-subtitle min-h-[4em]">
+              <TypewriterText texts={[t.about.subtitle]} />
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
