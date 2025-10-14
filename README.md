@@ -186,6 +186,11 @@ npm run build
 
 Les fichiers compilés seront dans le dossier `dist/`
 
+## 🗑️ Fichiers non utilisés
+
+Les fichiers suivants peuvent être ignorés car ils ne sont pas utilisés dans ce projet :
+- `bun.lockb` - Fichier de verrouillage de Bun (non utilisé, utilise npm)
+
 ## 📄 Licence
 
 Ce projet est privé et propriétaire.

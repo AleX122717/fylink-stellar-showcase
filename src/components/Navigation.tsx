@@ -42,16 +42,16 @@ const Navigation = () => {
         </div>
 
         <div className="hidden md:flex items-center space-x-8">
-          <a href="#features" className="text-sm font-medium hover:text-primary transition-colors">
+          <a href="#features" className="text-sm font-medium hover:text-primary transition-all duration-300 hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">
             {t.nav.features}
           </a>
-          <a href="#about" className="text-sm font-medium hover:text-primary transition-colors">
+          <a href="#about" className="text-sm font-medium hover:text-primary transition-all duration-300 hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">
             {t.nav.about}
           </a>
-          <a href="#premium" className="text-sm font-medium hover:text-primary transition-colors">
+          <a href="#premium" className="text-sm font-medium hover:text-primary transition-all duration-300 hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">
             {t.nav.premium}
           </a>
-          <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">
+          <a href="#contact" className="text-sm font-medium hover:text-primary transition-all duration-300 hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">
             {t.nav.contact}
           </a>
         </div>
@@ -79,7 +79,7 @@ const Navigation = () => {
                       language === lang ? 'bg-secondary text-primary font-semibold' : ''
                     }`}
                   >
-                    {lang === 'fr' ? '🇫🇷 Français' : lang === 'en' ? '🇬🇧 English' : '🇪🇸 Español'}
+                    {lang === 'fr' ? 'Français' : lang === 'en' ? 'English' : 'Español'}
                   </button>
                 ))}
               </div>
@@ -98,7 +98,7 @@ const Navigation = () => {
             )}
           </button>
 
-          <button className="px-6 py-2 bg-gradient-to-r from-primary to-accent text-white rounded-lg font-semibold hover:scale-105 transition-all">
+          <button className="px-6 py-2 bg-gradient-to-r from-primary to-accent text-white rounded-lg font-semibold hover:scale-105 hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 animate-pulse-glow">
             {t.nav.login}
           </button>
         </div>

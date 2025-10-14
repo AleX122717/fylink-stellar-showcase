@@ -53,7 +53,7 @@ const Footer = () => {
 
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground flex items-center gap-2">
-            © 2025 IceFy. {t.footer.copyright} <Heart className="w-4 h-4 text-red-500 fill-current animate-pulse" /> {t.footer.forCommunity}
+            © 2025 IceFy.
           </p>
 
           <div className="flex items-center gap-4">
