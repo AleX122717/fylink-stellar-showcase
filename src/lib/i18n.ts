@@ -70,6 +70,20 @@ export const translations = {
       discord: { title: 'Rejoindre Discord', description: 'Connectez-vous avec notre communauté, partagez vos idées et obtenez de l\'aide', cta: 'Rejoindre maintenant' },
       email: { title: 'Contact Direct', description: 'Une question ? Notre équipe est là pour vous accompagner', cta: 'Envoyer un message' },
     },
+    reviews: {
+      title: 'Ce que disent nos utilisateurs',
+      subtitle: 'Découvrez les témoignages de notre communauté',
+      items: [
+        { author: 'Marie Dupont', role: 'Gestionnaire de communauté', rating: 5, text: 'IceFy a complètement transformé ma façon de gérer ma communauté. Les fonctionnalités d\'automatisation sont exceptionnelles !' },
+        { author: 'Thomas Martin', role: 'Développeur', rating: 5, text: 'Une solution technique parfaitement conçue. L\'API est puissante et la documentation est claire.' },
+        { author: 'Sophie Bernard', role: 'Chef de projet', rating: 5, text: 'Le support client est incroyable et les fonctionnalités premium valent vraiment le coup. Hautement recommandé !' },
+        { author: 'Lucas Petit', role: 'Streamer', rating: 5, text: 'La meilleure plateforme pour gérer ma communauté Discord. Simple, efficace et moderne.' },
+        { author: 'Emma Rousseau', role: 'Community Manager', rating: 5, text: 'Les analyses détaillées m\'ont aidé à mieux comprendre ma communauté. Un outil indispensable !' },
+      ],
+    },
+    search: {
+      placeholder: 'Rechercher sur le site...',
+    },
     footer: {
       description: 'Innovation technologique pour communautés intelligentes',
       product: 'Produit',
@@ -94,6 +108,7 @@ export const translations = {
       features: 'Fonctionnalités',
       about: 'À propos',
       premium: 'Premium',
+      reviews: 'Avis',
       contact: 'Contact',
       login: 'Connexion',
     },
@@ -167,6 +182,20 @@ export const translations = {
       discord: { title: 'Join Discord', description: 'Connect with our community, share your ideas and get help', cta: 'Join Now' },
       email: { title: 'Direct Contact', description: 'A question? Our team is here to assist you', cta: 'Send Message' },
     },
+    reviews: {
+      title: 'What our users say',
+      subtitle: 'Discover testimonials from our community',
+      items: [
+        { author: 'Marie Dupont', role: 'Community Manager', rating: 5, text: 'IceFy has completely transformed the way I manage my community. The automation features are exceptional!' },
+        { author: 'Thomas Martin', role: 'Developer', rating: 5, text: 'A perfectly designed technical solution. The API is powerful and the documentation is clear.' },
+        { author: 'Sophie Bernard', role: 'Project Manager', rating: 5, text: 'Customer support is incredible and premium features are really worth it. Highly recommended!' },
+        { author: 'Lucas Petit', role: 'Streamer', rating: 5, text: 'The best platform to manage my Discord community. Simple, effective and modern.' },
+        { author: 'Emma Rousseau', role: 'Community Manager', rating: 5, text: 'Detailed analytics helped me better understand my community. An essential tool!' },
+      ],
+    },
+    search: {
+      placeholder: 'Search the site...',
+    },
     footer: {
       description: 'Technological innovation for smart communities',
       product: 'Product',
@@ -191,6 +220,7 @@ export const translations = {
       features: 'Features',
       about: 'About',
       premium: 'Premium',
+      reviews: 'Reviews',
       contact: 'Contact',
       login: 'Login',
     },
@@ -264,6 +294,20 @@ export const translations = {
       discord: { title: 'Únete a Discord', description: 'Conéctate con nuestra comunidad, comparte tus ideas y obtén ayuda', cta: 'Unirse Ahora' },
       email: { title: 'Contacto Directo', description: '¿Una pregunta? Nuestro equipo está aquí para ayudarte', cta: 'Enviar Mensaje' },
     },
+    reviews: {
+      title: 'Lo que dicen nuestros usuarios',
+      subtitle: 'Descubre testimonios de nuestra comunidad',
+      items: [
+        { author: 'Marie Dupont', role: 'Gestora de comunidad', rating: 5, text: 'IceFy ha transformado completamente la forma en que gestiono mi comunidad. ¡Las funciones de automatización son excepcionales!' },
+        { author: 'Thomas Martin', role: 'Desarrollador', rating: 5, text: 'Una solución técnica perfectamente diseñada. La API es potente y la documentación es clara.' },
+        { author: 'Sophie Bernard', role: 'Jefa de proyecto', rating: 5, text: 'El soporte al cliente es increíble y las funciones premium realmente valen la pena. ¡Altamente recomendado!' },
+        { author: 'Lucas Petit', role: 'Streamer', rating: 5, text: 'La mejor plataforma para gestionar mi comunidad de Discord. Simple, efectiva y moderna.' },
+        { author: 'Emma Rousseau', role: 'Community Manager', rating: 5, text: 'Los análisis detallados me ayudaron a comprender mejor mi comunidad. ¡Una herramienta esencial!' },
+      ],
+    },
+    search: {
+      placeholder: 'Buscar en el sitio...',
+    },
     footer: {
       description: 'Innovación tecnológica para comunidades inteligentes',
       product: 'Producto',
@@ -288,6 +332,7 @@ export const translations = {
       features: 'Características',
       about: 'Acerca de',
       premium: 'Premium',
+      reviews: 'Opiniones',
       contact: 'Contacto',
       login: 'Iniciar Sesión',
     },
@@ -295,3 +340,9 @@ export const translations = {
 };
 
 export const getTranslation = (language: Language) => translations[language];
+
+// Fonction pour détecter automatiquement la langue du navigateur
+export const detectBrowserLanguage = (): Language => {
+  const browserLang = navigator.language.split('-')[0];
+  return ['fr', 'en', 'es'].includes(browserLang) ? (browserLang as Language) : 'fr';
+};

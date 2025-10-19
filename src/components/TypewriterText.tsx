@@ -9,9 +9,9 @@ interface TypewriterTextProps {
 
 const TypewriterText = ({ 
   texts, 
-  typingSpeed = 100, 
-  deletingSpeed = 50, 
-  pauseDuration = 2000 
+  typingSpeed = 50, 
+  deletingSpeed = 30, 
+  pauseDuration = 1500 
 }: TypewriterTextProps) => {
   const [displayText, setDisplayText] = useState('');
   const [textIndex, setTextIndex] = useState(0);

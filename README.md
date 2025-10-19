@@ -31,12 +31,283 @@ npm run dev
 
 Le site sera accessible sur `http://localhost:8080`
 
+### 4. Arrêter le serveur de développement
+
+Pour arrêter le serveur de développement, appuyez sur `Ctrl+C` dans le terminal.
+
 ## 📦 Scripts disponibles
 
 - `npm run dev` - Lance le serveur de développement
 - `npm run build` - Compile le projet pour la production
 - `npm run preview` - Prévisualise la version de production
 - `npm run lint` - Vérifie la qualité du code
+
+## 🌐 Système de traduction
+
+### Comment le système fonctionne
+
+Le site utilise un système de traduction automatique qui :
+- **Détecte automatiquement** la langue du navigateur de l'utilisateur au premier chargement
+- **Synchronise** toutes les nouvelles fonctionnalités et textes dans les 3 langues (FR/EN/ES)
+- **Mémorise** le choix de langue de l'utilisateur dans le navigateur
+
+### Ajouter ou modifier des traductions
+
+Toutes les traductions se trouvent dans le fichier **`src/lib/i18n.ts`**
+
+#### Structure du fichier de traductions
+
+```typescript
+export const translations = {
+  fr: {
+    hero: { /* textes de la section hero */ },
+    features: { /* textes des fonctionnalités */ },
+    // ... autres sections
+  },
+  en: { /* même structure en anglais */ },
+  es: { /* même structure en espagnol */ }
+};
+```
+
+#### Ajouter une nouvelle section
+
+1. Ouvrez `src/lib/i18n.ts`
+2. Ajoutez votre nouvelle section dans **les 3 langues** (fr, en, es) :
+
+```typescript
+// Dans la section fr:
+maSection: {
+  titre: 'Mon Titre',
+  description: 'Ma description',
+},
+
+// Dans la section en:
+maSection: {
+  titre: 'My Title',
+  description: 'My description',
+},
+
+// Dans la section es:
+maSection: {
+  titre: 'Mi Título',
+  description: 'Mi descripción',
+},
+```
+
+3. Utilisez vos traductions dans un composant :
+
+```typescript
+import { useLanguage } from '@/contexts/LanguageContext';
+
+const MonComposant = () => {
+  const { t } = useLanguage();
+  
+  return (
+    <div>
+      <h2>{t.maSection.titre}</h2>
+      <p>{t.maSection.description}</p>
+    </div>
+  );
+};
+```
+
+#### Modifier des textes existants
+
+1. Ouvrez `src/lib/i18n.ts`
+2. Trouvez la section correspondante (hero, features, about, premium, reviews, contact, footer, nav, search)
+3. Modifiez le texte dans **les 3 langues** pour maintenir la cohérence
+4. Sauvegardez le fichier - les changements apparaîtront automatiquement
+
+#### Sections disponibles
+
+- **hero** : Section d'accueil avec le titre principal
+- **features** : Fonctionnalités du produit
+- **about** : À propos d'IceFy
+- **premium** : Offres Premium et Premium+
+- **reviews** : Avis des utilisateurs
+- **contact** : Section contact
+- **footer** : Pied de page
+- **nav** : Menu de navigation
+- **search** : Barre de recherche
+
+### Changer la langue par défaut
+
+Par défaut, le site détecte la langue du navigateur. Pour forcer une langue par défaut :
+
+1. Ouvrez `src/contexts/LanguageContext.tsx`
+2. Modifiez la ligne 19 :
+
+```typescript
+// Langue par défaut : 'fr', 'en', ou 'es'
+return ['fr', 'en', 'es'].includes(browserLang) ? (browserLang as Language) : 'fr';
+//                                                                           ↑
+//                                                    Changez 'fr' par la langue souhaitée
+```
+
+## 🎨 Personnalisation du design
+
+### Couleurs et thème
+
+Pour personnaliser les couleurs et le design, modifiez les fichiers suivants :
+
+#### `src/index.css` - Variables CSS du design system
+
+```css
+:root {
+  --primary: 210 100% 50%;     /* Couleur primaire (HSL) */
+  --accent: 160 100% 45%;      /* Couleur d'accentuation (HSL) */
+  /* ... autres variables */
+}
+```
+
+#### `tailwind.config.ts` - Configuration Tailwind
+
+```typescript
+theme: {
+  extend: {
+    colors: {
+      primary: 'hsl(var(--primary))',
+      accent: 'hsl(var(--accent))',
+      // ... autres couleurs
+    }
+  }
+}
+```
+
+## 📝 Ajouter du contenu
+
+### Ajouter un nouvel avis utilisateur
+
+1. Ouvrez `src/lib/i18n.ts`
+2. Trouvez la section `reviews.items` dans chaque langue
+3. Ajoutez un nouvel objet :
+
+```typescript
+{ 
+  author: 'Nom Prénom', 
+  role: 'Rôle/Fonction', 
+  rating: 5, 
+  text: 'Texte de l\'avis' 
+}
+```
+
+### Modifier les réseaux sociaux
+
+Pour modifier les liens des réseaux sociaux :
+
+1. Ouvrez `src/components/Footer.tsx`
+2. Modifiez les attributs `href` des liens sociaux :
+
+```typescript
+<a href="https://discord.gg/votre-serveur" ...>  // Discord
+<a href="https://twitter.com/votre-compte" ...>  // Twitter
+<a href="https://github.com/votre-compte" ...>   // GitHub
+// ... etc
+```
+
+### Ajouter une nouvelle fonctionnalité
+
+1. Ajoutez les traductions dans `src/lib/i18n.ts` (section `features`)
+2. Modifiez `src/components/FeaturesSection.tsx` :
+
+```typescript
+const features = [
+  // ... fonctionnalités existantes
+  { 
+    icon: VotreIcone, 
+    key: 'votreCle', 
+    color: 'text-votre-couleur', 
+    animation: 'hover:scale-110' 
+  },
+];
+```
+
+## 📁 Structure du projet
+
+```
+icefy/
+├── src/
+│   ├── components/          # Composants React
+│   │   ├── ui/             # Composants UI (shadcn)
+│   │   ├── Navigation.tsx  # Barre de navigation
+│   │   ├── HeroSection.tsx # Section héro
+│   │   ├── FeaturesSection.tsx
+│   │   ├── AboutSection.tsx
+│   │   ├── PremiumSection.tsx
+│   │   ├── ReviewsSection.tsx  # Section avis
+│   │   ├── SearchBar.tsx   # Barre de recherche
+│   │   ├── ContactSection.tsx
+│   │   └── Footer.tsx
+│   ├── contexts/           # Contextes React
+│   │   └── LanguageContext.tsx  # Gestion multilingue
+│   ├── lib/
+│   │   ├── i18n.ts        # ⭐ FICHIER DE TRADUCTIONS
+│   │   └── utils.ts
+│   ├── pages/
+│   │   ├── Index.tsx      # Page d'accueil
+│   │   └── NotFound.tsx
+│   ├── hooks/             # Hooks personnalisés
+│   ├── index.css          # ⭐ DESIGN SYSTEM
+│   └── main.tsx
+├── public/                # Fichiers publics
+├── tailwind.config.ts     # ⭐ CONFIG TAILWIND
+├── package.json
+└── README.md             # Ce fichier
+```
+
+## ✨ Fonctionnalités
+
+- ✅ **Thème clair/sombre** avec détection automatique du système
+- ✅ **Système multilingue** (Français, Anglais, Espagnol) avec détection automatique
+- ✅ **Animations avancées** (vagues, dégradés, texte machine à écrire)
+- ✅ **Design responsive** adapté à tous les écrans
+- ✅ **Carousel d'avis** défilant automatiquement
+- ✅ **Barre de recherche** avec suggestions intelligentes
+- ✅ **2 offres Premium** (Premium à 4,99€ et Premium+ à 19,99€)
+- ✅ **Navigation rétractable** au scroll
+- ✅ **Réseaux sociaux** (Discord, Twitter, GitHub, LinkedIn, Instagram, TikTok)
+
+## 🎨 Technologies utilisées
+
+- **React 18** - Framework JavaScript
+- **TypeScript** - Langage typé
+- **Vite** - Build tool ultra-rapide
+- **Tailwind CSS** - Framework CSS utilitaire
+- **shadcn/ui** - Composants UI modernes
+- **Lucide React** - Icônes
+- **React Router** - Navigation
+
+## 🌐 Déploiement
+
+Pour compiler le projet pour la production :
+
+```bash
+npm run build
+```
+
+Les fichiers compilés seront dans le dossier `dist/`
+
+## 🔧 Résolution de problèmes
+
+### Le serveur ne démarre pas
+- Vérifiez que Node.js est installé : `node --version`
+- Supprimez `node_modules` et réinstallez : `rm -rf node_modules && npm install`
+
+### Les traductions ne s'affichent pas
+- Vérifiez que vous avez bien ajouté le texte dans **les 3 langues** (fr, en, es)
+- Vérifiez la structure du fichier `src/lib/i18n.ts`
+
+### Les changements CSS ne s'appliquent pas
+- Videz le cache du navigateur (Ctrl+Shift+R)
+- Vérifiez que vous utilisez les variables HSL dans `index.css`
+
+## 📄 Licence
+
+Ce projet est privé et propriétaire.
+
+---
+
+**Développé avec ❄️ par l'équipe IceFy**
 
 ## 📁 Structure du projet
 

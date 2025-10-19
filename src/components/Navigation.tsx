@@ -10,8 +10,21 @@ const Navigation = () => {
   const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains('dark');
-    setIsDark(isDarkMode);
+    // Détection du thème système par défaut
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme) {
+      const isDarkMode = savedTheme === 'dark';
+      setIsDark(isDarkMode);
+      if (isDarkMode) {
+        document.documentElement.classList.add('dark');
+      }
+    } else if (prefersDark) {
+      setIsDark(true);
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    }
 
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -25,6 +38,7 @@ const Navigation = () => {
     const newTheme = !isDark;
     setIsDark(newTheme);
     document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
   };
 
   return (
@@ -50,6 +64,9 @@ const Navigation = () => {
           </a>
           <a href="#premium" className="text-sm font-medium hover:text-[hsl(45,100%,50%)] transition-all duration-300 hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[hsl(45,100%,50%)] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">
             {t.nav.premium}
+          </a>
+          <a href="#reviews" className="text-sm font-medium hover:text-primary transition-all duration-300 hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">
+            {t.nav.reviews}
           </a>
           <a href="#contact" className="text-sm font-medium hover:text-primary transition-all duration-300 hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100">
             {t.nav.contact}

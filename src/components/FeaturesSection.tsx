@@ -53,11 +53,11 @@ const FeaturesSection = () => {
             return (
               <div
                 key={index}
-                className="feature-card opacity-0 group p-8 bg-card border border-border rounded-2xl hover:border-primary transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
+                className="feature-card opacity-0 group p-8 bg-card/50 backdrop-blur-sm border border-border rounded-2xl hover:border-primary transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-3 hover:scale-105"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className={`w-16 h-16 rounded-xl bg-secondary flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300 ${feature.animation} color-animate`}>
-                  <Icon className={`w-8 h-8 ${feature.color} group-hover:text-white transition-all duration-300`} />
+                <div className={`w-16 h-16 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-6 group-hover:from-primary group-hover:to-accent transition-all duration-500 ${feature.animation}`}>
+                  <Icon className={`w-8 h-8 ${feature.color} group-hover:text-white transition-all duration-500`} />
                 </div>
                 
                 <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
